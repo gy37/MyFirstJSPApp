@@ -9,6 +9,8 @@
     private int initVar = 0;
     private int serviceVar = 0;
     private int destroyVar = 0;
+    int today = -1;
+    int fontSize;
 %>
 
 <%!
@@ -34,5 +36,58 @@
 <p><%=content1 %></p>
 <p><%=content2 %></p>
 <p><%=content3 %></p>
+
+<%
+    out.println("你的 IP 地址 " + request.getRemoteAddr());
+%>
+<p>
+    今天的日期是：<%= (new java.util.Date()).toLocaleString() %>
+</p>
+
+<%
+    java.util.Calendar cal = java.util.Calendar.getInstance();
+    today = cal.get(java.util.Calendar.DAY_OF_WEEK) - 1;
+    out.println(today);
+%>
+<% if (today == 1 || today == 7) { %>
+    <p>今天是周末</p>
+<% } else { %>
+    <p>今天不是周末</p>
+<% } %>
+
+<%
+    switch(today) {
+    case 0:
+       out.println("星期日");
+       break;
+    case 1:
+       out.println("星期一");
+       break;
+    case 2:
+       out.println("星期二");
+       break;
+    case 3:
+       out.println("星期三");
+       break;
+    case 4:
+       out.println("星期四");
+       break;
+    case 5:
+       out.println("星期五");
+       break;
+    case 6:
+       out.println("星期六");
+       break;
+    default:
+       out.println("未知");
+    }
+%>
+<br />
+<% for(fontSize = 1; fontSize <= 3; fontSize ++) { %>
+    <font color="green" size="<%= fontSize %>">
+    菜鸟教程
+    </font>
+    <br />
+<% } %>
 </body>
 </html>

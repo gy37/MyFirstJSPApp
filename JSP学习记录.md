@@ -20,19 +20,42 @@
 9. 基本语法
    * 脚本，任何文本、HTML 标签、JSP 元素必须写在脚本程序的外面
        <%
-        //在这里编写你的Java代码
+        //Java代码片段
        %>
-   * 声明，用于声明变量、方法，要写函数只能在这里面，必须先声明才可以使用
+   * 声明，用于声明变量、方法，必须先声明才可以使用
        <%!
-        //Java
+        //声明Java变量
        %>
-   * 表达式，表达式里面的代码可以不写分号
-       <%= //Java %>
+   * 表达式，先被转化成String，然后插入到表达式出现的地方，表达式里面的代码可以不写分号
+       <%= //Java表达式 %>
    * 注释
-       <%-- 该部分注释在网页中不会被显示 --%>
-       <!-- 该部分注释在网页源代码中会被显示 --> 
+       <%-- JSP注释，该部分注释在不会被编译 --%>
+       <!-- HTML注释，该部分注释在网页源代码中可以查看 --> 
    * 指令
-       <%@ page 页面属性 %>
+       <%@ page 定义页面的依赖属性 %>
        <%@ include 包含文件 %>
-       <%@ taglib 标签 %>
-10. 
+       <%@ taglib 引入标签库的定义，可以是自定义标签 %>
+   * 行为，使用XML语法控制servlet引擎
+       <jsp:include 用于在当前页面中包含 />
+       <jsp:useBean 寻找和初始化一个JavaBean组件 />
+       <jsp:setProperty 设置 JavaBean组件的值 />
+       <jsp:getProperty 将 JavaBean组件的值插入到 output中 />
+       <jsp:forward 从一个JSP文件向另一个文件传递一个包含用户请求的request对象 />
+       <jsp:plugin 用于在生成的HTML页面中包含Applet和JavaBean对象 />
+       <jsp:element 动态创建一个XML元素 />
+       <jsp:attribute 定义动态创建的XML元素的属性 />
+       <jsp:body 定义动态创建的XML元素的主体 />
+       <jsp:text 用于封装模板数据 />
+   * JSP隐含对象，支持9个自动定义的变量
+       request	HttpServletRequest类的实例
+       response	HttpServletResponse类的实例
+       out	PrintWriter类的实例，用于把结果输出至网页上
+       session	HttpSession类的实例
+       application	ServletContext类的实例，与应用上下文有关
+       config	ServletConfig类的实例
+       pageContext	PageContext类的实例，提供对JSP页面所有对象以及命名空间的访问
+       page	类似于Java类中的this关键字
+       exception	exception 类的对象，代表发生错误的 JSP 页面中对应的异常对象
+10. 中文显示乱码问题，需要在JSP文件头部添加代码：
+    `<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>`
+11. 
