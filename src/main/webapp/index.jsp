@@ -89,5 +89,31 @@
     </font>
     <br />
 <% } %>
+
+<jsp:useBean id="test" class="bean.TestBean" />
+<jsp:setProperty name="test" property="message" value="菜鸟教程" />
+<p>获取TestBean的值：</p>
+<jsp:getProperty name="test" property="message" />
+
+<%-- <jsp:forward page="test.jsp" /> --%>
+<%--
+<jsp:plugin type="applet" codebase="dirname" code="MyApplet.class" width="60" height="80">
+    <jsp:param name="fontcolor" value="red" />
+    <jsp:param name="background" value="black" />
+    <jsp:fallback>Unable to initialize Java Plugin</jsp:fallback>
+</jsp:plugin>
+--%>
+
+<br />
+<jsp:element name="XMLElement">
+    <jsp:attribute name="xmlElementAttr">
+        属性值
+    </jsp:attribute>
+    <jsp:body>
+        XML 元素的主体
+    </jsp:body>
+</jsp:element>
+
+<jsp:text>Welcome to JSP Programming</jsp:text>
 </body>
 </html>

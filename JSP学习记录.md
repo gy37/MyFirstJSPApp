@@ -31,12 +31,12 @@
    * 注释
        <%-- JSP注释，该部分注释在不会被编译 --%>
        <!-- HTML注释，该部分注释在网页源代码中可以查看 --> 
-   * 指令
+   * 指令，用来设置整个JSP页面相关的属性，如网页的编码方式和脚本语言。
        <%@ page 定义页面的依赖属性 %>
        <%@ include 包含文件 %>
        <%@ taglib 引入标签库的定义，可以是自定义标签 %>
-   * 行为，使用XML语法控制servlet引擎
-       <jsp:include 用于在当前页面中包含 />
+   * 行为，使用XML语法控制servlet引擎，在请求处理阶段起作用
+       <jsp:include 用于在当前页面中包含静态或动态文件 />
        <jsp:useBean 寻找和初始化一个JavaBean组件 />
        <jsp:setProperty 设置 JavaBean组件的值 />
        <jsp:getProperty 将 JavaBean组件的值插入到 output中 />
