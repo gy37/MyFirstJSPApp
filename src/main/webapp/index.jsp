@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.io.*,java.util.*" %>
 <html>
 <head>
 <title>life.jsp</title>
@@ -115,5 +116,61 @@
 </jsp:element>
 
 <jsp:text>Welcome to JSP Programming</jsp:text>
+
+<table width="100%" border="1" align="center">
+<tr bgcolor="#949494">
+<th>Header Name</th><th>Header Value(s)</th>
+</tr>
+<%
+    Enumeration headerNames = request.getHeaderNames();
+    while (headerNames.hasMoreElements()) {
+        String paramName = (String)headerNames.nextElement();
+        out.print("<tr><td>" + paramName + "</td>\n");
+        String paramValue = request.getHeader(paramName);
+        out.print("<td>" + paramValue + "</td></tr>\n");
+    }
+%>
+</table>
+
+    <%-- response.setIntHeader("Refresh", 3); --%>
+<%
+    Calendar calendar = new GregorianCalendar();
+    String am_pm;
+    int hour = calendar.get(Calendar.HOUR);
+    int minute = calendar.get(Calendar.MINUTE);
+    int second = calendar.get(Calendar.SECOND);
+    if (calendar.get(Calendar.AM_PM) == 0) {
+        am_pm = "AM";
+    } else {
+        am_pm = "PM";
+    }
+    String CT = hour + ":" + minute + ":" + second + " " + am_pm;
+    out.println("当前时间：" + CT + "\n");
+%>
+
+<%--
+    response.sendError(404, "Not Found");
+--%>
+<ul>
+    <li>
+        <p><b>站点名：</b><%= request.getParameter("name") %></p>
+    </li>
+    <li>
+        <p><b>网址：</b><%= request.getParameter("url") %></p>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <p><b>Google是否选中：</b><%= request.getParameter("google") %></p>
+    </li>
+    <li>
+        <p><b>菜鸟教程是否选中：</b><%= request.getParameter("runoob") %></p>
+    </li>
+    <li>
+        <p><b>淘宝是否选中：</b><%= request.getParameter("taobao") %></p>
+    </li>
+</ul>
+
 </body>
 </html>
