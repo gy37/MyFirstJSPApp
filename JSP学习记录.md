@@ -58,4 +58,6 @@
        exception	exception 类的对象，代表发生错误的 JSP 页面中对应的异常对象
 10. 中文显示乱码问题，需要在JSP文件头部添加代码：
     `<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>`
-11. 
+11. JSP 和 Servlet 中的过滤器都是 Java 类。过滤器可以动态地拦截请求和响应，以变换或使用包含在请求或响应中的信息。可以将一个或多个过滤器附加到一个 Servlet 或一组 Servlet。过滤器也可以附加到 JavaServer Pages (JSP) 文件和 HTML 页面。过滤器通过 Web 部署描述符（web.xml）中的 XML 标签来声明，然后映射到您的应用程序的部署描述符中的 Servlet 名称或 URL 模式。
+12. 过滤器是一个实现了 javax.servlet.Filter 接口的 Java 类。javax.servlet.Filter 接口定义了三个方法：public void doFilter (ServletRequest, ServletResponse, FilterChain)；public void init(FilterConfig filterConfig)；public void destroy()；
+13. web.xml配置节点，<filter>指定一个过滤器；<filter-mapping>元素用于设置一个 Filter 所负责拦截的资源。一个Filter拦截的资源可通过两种方式来指定：Servlet 名称和资源访问的请求路径；<servlet-name>指定过滤器所拦截的Servlet名称；
