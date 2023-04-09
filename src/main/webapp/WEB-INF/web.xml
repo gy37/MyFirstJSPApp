@@ -25,4 +25,7 @@
     <servlet-name>DisplayHeader</servlet-name>
     <url-pattern>/TomcatTest/DisplayHeader</url-pattern>
   </servlet-mapping>
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
 </web-app>
