@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.io.*,java.util.*,java.net.*" %>
+<%@ page import="javax.servlet.*,java.text.*" %>
 <html>
 <head>
-<title>life.jsp</title>
+<title>index.jsp</title>
 </head>
 <body>
 
@@ -255,5 +256,27 @@
 <%
     session.invalidate();
 %>
+<%
+    Date now = new Date();
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    out.print("<h2 align=\"center\">" + format.format(now) + "</h2>");
+%>
+<%--
+    String site = new String("http://www.runoob.com");
+    response.setStatus(response.SC_MOVED_TEMPORARILY);
+    response.setHeader("Location", site);
+--%>
+<%
+    Integer hitsCount = (Integer)application.getAttribute("hitCount");
+    if (hitsCount == null || hitsCount == 0) {
+        out.println("欢迎访问菜鸟教程！");
+        hitsCount = 1;
+    } else {
+        out.println("欢迎再次访问菜鸟教程！");
+        hitsCount += 1;
+    }
+    application.setAttribute("hitCount", hitsCount);
+%>
+<p>页面访问量为：<%= hitsCount %></p>
 </body>
 </html>
